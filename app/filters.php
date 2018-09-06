@@ -85,9 +85,9 @@ add_filter('comments_template', function ($comments_template) {
 /**
  * Render WordPress searchform using Blade
  */
-add_filter('get_search_form', function () {
+/* add_filter('get_search_form', function () {
     return template('partials.searchform');
-});
+}); */
 
 /**
  * Collect data for searchform.
