@@ -1,9 +1,9 @@
 {
-  "name": "roots/sage",
+  "name": "antistatique/sage",
   "type": "wordpress-theme",
   "license": "MIT",
-  "description": "WordPress starter theme with a modern development workflow",
-  "homepage": "https://roots.io/sage/",
+  "description": "WordPress starter theme with a modern development workflow. Based on roots/sage",
+  "homepage": "https://github.com/antistatique/wise/",
   "authors": [
     {
       "name": "Ben Word",
@@ -19,12 +19,15 @@
       "name": "QWp6t",
       "email": "hi@qwp6t.me",
       "homepage": "https://github.com/qwp6t"
+    },
+    {
+      "name": "Flavien Knuchel",
+      "email": "knuchelf@gmail.com"
     }
   ],
   "keywords": ["wordpress"],
   "support": {
-    "issues": "https://github.com/roots/sage/issues",
-    "forum": "https://discourse.roots.io/"
+    "issues": "https://github.com/antistatique/wise/issues"
   },
   "autoload": {
     "psr-4": {
