@@ -66,6 +66,11 @@ add_action('after_setup_theme', function () {
      * @see resources/assets/styles/layouts/_tinymce.scss
      */
     add_editor_style(asset_path('styles/main.css'));
+
+    /**
+     * Load language domain
+     */
+    load_theme_textdomain('wise', get_template_directory() . '/lang');
 }, 20);
 
 /**
