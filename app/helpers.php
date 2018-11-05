@@ -140,3 +140,69 @@ function display_sidebar()
     isset($display) || $display = apply_filters('sage/display_sidebar', false);
     return $display;
 }
+
+/**
+ * change excerpt length
+ * These functions ares used by the smart_excerpt() function
+ */
+function smart_excerpt_length( $length = 0 ) {
+	return 55;
+}
+add_filter( 'excerpt_length', 'smart_excerpt_length', 9999 );
+
+function smart_excerpt_more( $more = '') {
+    return ' (...)';
+}
+add_filter( 'excerpt_more', 'smart_excerpt_more' );
+
+/**
+ * custom function for excerpts. With a given post, returns a formatted excerpt.
+ * it will have the same behaviour whether it takes a user-defined excerpt or generates one from the content
+ * @arg $post a WP_Post object
+ */
+function smart_excerpt($post = null) {
+	if(!$post) return '';
+	$excerpt = $post->post_excerpt;
+	if (strlen($excerpt) == 0) {
+		// custom excerpt is empty, let's generate one
+		$excerpt = strip_shortcodes($post->post_content);
+		$excerpt = str_replace(array("\r\n", "\r", "\n", "&nbsp;"), "", $excerpt);
+		$excerpt = wp_trim_words($excerpt, smart_excerpt_length(), smart_excerpt_more());
+	} else {
+		// custom excerpt is set, let's trim it
+		$excerpt = wp_trim_words($excerpt, smart_excerpt_length(), smart_excerpt_more());
+	}
+	return $excerpt;
+}
+
+/**
+ * This fuctions returns an array with menu items to include in the breadcrumbs
+ */
+function get_breadcrumb() {
+	$context = Timber::get_context();
+    $post = new Timber\Post();
+        $items = $context['menu']->items;
+        $crumbs = [];
+
+    foreach ($items as $item) {
+        if ($item->current_item_parent
+        || $item->current_item_ancestor
+        || $item->current) {
+        $crumbs[] = $item;
+        }
+    }
+
+    if (is_single() && get_post_type() == 'post') {
+        // add article page to the breadcrumbs
+        $page_for_posts = new Timber\Post(get_option('page_for_posts'));
+        $page_for_posts->url = get_permalink($page_for_posts);
+        $crumbs[] = $page_for_posts;
+
+        // add current post title to the breadcrumbs
+        $post->url = get_permalink($page_for_posts);
+        $post->current = true;
+        $crumbs[] = $post;
+    }
+
+	return $crumbs;
+}
