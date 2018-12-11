@@ -27,5 +27,5 @@ return [
     |
     */
 
-    'uri' => get_theme_file_uri().'/dist',
+    'uri' => get_theme_file_uri().'/resources/dist',
 ];
