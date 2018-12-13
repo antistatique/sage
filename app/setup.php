@@ -94,7 +94,7 @@ add_action('after_setup_theme', function () {
     /**
      * Load language domain
      */
-    load_theme_textdomain('wise', get_template_directory() . '/lang');
+    load_theme_textdomain('lang', get_template_directory() . '/lang');
 }, 20);
 
 /**
