@@ -1,3 +1,26 @@
+# Wise and Bedrock
+To use Wise inside a Bedrock-powered wordpress installation, follow these steps:
+
+* clone the content of this repository inside you `web/app/themes/[your-theme-name]/` directory
+* launch `composer require wikimedia/composer-merge-plugin` at the root of your project (so that it is added to your **bedrock instal dependencies**)
+* add this code to your bedrock `composer.json` to correctly load the **wise theme dependencies**
+```json
+  "extra": {
+    "merge-plugin": {
+            "require": [
+                "web/app/themes/gutenberg/composer.json"
+            ],
+            "recurse": true,
+            "replace": false,
+            "ignore-duplicates": false,
+            "merge-dev": true,
+            "merge-extra": true,
+            "merge-extra-deep": true,
+            "merge-scripts": false
+        }
+  }
+```
+
 # [Sage](https://roots.io/sage/)
 [![Packagist](https://img.shields.io/packagist/vpre/roots/sage.svg?style=flat-square)](https://packagist.org/packages/roots/sage)
 [![devDependency Status](https://img.shields.io/david/dev/roots/sage.svg?style=flat-square)](https://david-dm.org/roots/sage#info=devDependencies)
