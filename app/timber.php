@@ -11,7 +11,7 @@ Timber::$dirname = array('templates');
 /**
  * Extend TimberSite with site wide properties
  */
-class SageTimberTheme extends TimberSite {
+class WiseTimberTheme extends Timber\Site {
 	function __construct() {
 		add_filter( 'timber_context', array( $this, 'add_to_context' ) );
 		parent::__construct();
@@ -26,4 +26,4 @@ class SageTimberTheme extends TimberSite {
 		return $context;
 	}
 }
-new SageTimberTheme();
+new WiseTimberTheme();
