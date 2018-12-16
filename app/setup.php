@@ -14,17 +14,18 @@ add_action('wp_enqueue_scripts', function () {
     /**
      * Styles
      */
-    // wp_enqueue_style('sage/main.css', asset_path('styles/main.css'), false, null);
+    // wp_enqueue_style('wise/styles', asset_path('css/base.css'), false, null);
 
     /**
      * Jquery (forcing our version over the default wordpress one)
      */
-    /* wp_deregister_script('jquery');
-    wp_enqueue_script('jquery', 'https: *///cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js', null, true);
+        // wp_deregister_script('jquery');
+        // wp_enqueue_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js', null, true);
+
     /**
      * scripts
      */
-    // wp_enqueue_script('sage/main.js', asset_path('scripts/main.js'), ['jquery'], null, true);
+    // wp_enqueue_script('wise/vendors', asset_path('js/vendors.min.js'), ['jquery'], null, true);
 
     /**
      * scripts (with variable injection)
@@ -32,7 +33,7 @@ add_action('wp_enqueue_scripts', function () {
     /*
     wp_register_script('wise/scripts', asset_path('js/app.bundle.js'), [], null, true);
     $datas = [
-        'svg_path' => '/app/themes/immorama/resources/dist/icons/icons.svg'
+        'svgPath' => '/app/themes/wise/resources/dist/icons/icons.svg'
     ];
     wp_localize_script( 'wise/scripts', 'data', $datas );
     wp_enqueue_script('wise/scripts');
