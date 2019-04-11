@@ -27,7 +27,7 @@ function as_acf_init() {
 function as_block_render( $block ) {
 	// ACF fields can be found here:
 	$context = Timber::get_context();
-	$context['fields'] = $block->data;
+	$context['fields'] = $block['data'];
 	$output = Timber::compile( 'view.twig', $context );
 	echo $output;
 }
